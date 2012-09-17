@@ -278,8 +278,8 @@ def rate_name2(name):
 def main():
     print "%s,%s,%s,%s,%s,%s" % ("姓名","八字","笔画","数理","数理补充","建议")
     make_name("刘", SHUI, "君")
-    make_name1("刘", "晨", SHUI)
-    rate_name("刘晨君", "男", "2012", "5", "11", "23", "45")
+    #make_name1("刘", "晨", SHUI)
+    #rate_name("刘晨君", "男", "2012", "5", "11", "23", "45")
 
 if __name__ == '__main__':
     main()
