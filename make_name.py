@@ -221,7 +221,7 @@ def make_name1(xing, zi, zs):
 def make_name2(xing, zs1, zs2):
     for z1 in zs1:
         for z2 in zs2:
-            print "%s%s%s" % (xing, z1, z2)
+            #print "%s%s%s" % (xing, z1, z2)
             name = "%s%s%s" % (xing, z1, z2)
             rate_name2(name)
 
@@ -245,6 +245,7 @@ def rate_name(name, sex, y, m, d, h, i):
             #print r.text
             ret = r.text.encode("utf-8")
             n = ret.split("-------------------------------------------------------------------")[0]
+            #print n
             text = n.split("姓名测评分析、建议")[1]
             n = text.split("建议：")
             suggest = n[1]
@@ -257,29 +258,28 @@ def rate_name(name, sex, y, m, d, h, i):
             bazi = n[1]
 
             #print "姓名", name
-            #print "八字", bazi.replace("<font color=blue>","").replace("</font><br>","")
-            bazi = bazi.replace("<font color=blue>","").replace("</font><br>","")
-            #print "笔画", num.replace("“<font color=blue>","").replace("</font>”,","")
+            bazi = bazi.replace("<font color=blue>","").replace("</font><br>","").replace("<br>", "")
+            #print "八字", bazi
             num = num.replace("“<font color=blue>","").replace("</font>”,","")
-            #print "数理", rate.replace("<font color=blue>", "")
+            #print "笔画", num
             rate = rate.replace("<font color=blue>", "")
-            #print "数理补充", rate_desc.replace("。(笔画以康熙字典为准)<br><font color=#FF0080>","")
-            rate_desc = rate_desc.replace("。(笔画以康熙字典为准)<br><font color=#FF0080>","")
-            #print "建议", suggest
+            #print "数理", rate
+            rate_desc = rate_desc.replace("。(笔画以康熙字典为准)<br><font color=#FF0080>","").split("<br>")[0]
+            #print "数理补充", rate_desc
             suggest = suggest.replace("</font><br><br style=line-height:50%>","")
+            #print "建议", suggest
             print "%s,%s,%s,%s,%s,%s" % (name, bazi, num, rate, rate_desc, suggest)
         except:
             pass
         sleep(1)
 
 def rate_name2(name):
-    rate_name(name, "男", "2012", "5", "11", "23", "45")
+    rate_name(name, "男", "2015", "11", "30", "3", "26")
 
 def main():
     print "%s,%s,%s,%s,%s,%s" % ("姓名","八字","笔画","数理","数理补充","建议")
-    make_name("刘", SHUI, "君")
-    #make_name1("刘", "晨", SHUI)
-    #rate_name("刘晨君", "男", "2012", "5", "11", "23", "45")
+    #make_name("刘", "世", SHUI)
+    make_name2("刘", JIN, SHUI)
 
 if __name__ == '__main__':
     main()
